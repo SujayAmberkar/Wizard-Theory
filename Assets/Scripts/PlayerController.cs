@@ -78,11 +78,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // Teleport mechanics
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag=="Portal1"){
-            transform.position = GameObject.FindGameObjectWithTag("Portal2").transform.position;
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D other) {
+    //     if(other.tag=="Portal1"){
+    //         transform.position = GameObject.FindGameObjectWithTag("Portal2").transform.position;
+    //     }
+    // }
 
     public float dashForce = 1000f; 
     void Dash(){
