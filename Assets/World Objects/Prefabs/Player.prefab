@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 352694740}
   - component: {fileID: 352694741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_eye1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.879
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0, a: 1}
-  m_Intensity: 1.99
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000658b3772990b66f7119ff5c8
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763737809}
   - component: {fileID: 763737810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Player_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.879
-  m_Color: {r: 0.5818797, g: 0.61050826, b: 0.6603774, a: 1}
-  m_Intensity: 0.73
+  m_Color: {r: 0.61698115, g: 0.7701887, b: 1, a: 1}
+  m_Intensity: 0.72
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000658b3772990b66f7119ff5c8
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1843500166}
   - component: {fileID: 1843500167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_eye1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.879
-  m_Color: {r: 0.9960785, g: 0.9960785, b: 0.14117648, a: 1}
-  m_Intensity: 44.39
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000658b3772990b66f7119ff5c8
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 4421665193928186426}
   - component: {fileID: 1043557187}
   - component: {fileID: 6123119676508201812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d0f78603aa764468347cc63a6f8f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   jumpSpeed: 11
   bulletSpeed: 1000
   projectile: {fileID: 457636936423943872, guid: f41d0adfb0fe6e148999507079519450, type: 3}
