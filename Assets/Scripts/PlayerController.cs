@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     //variable declaration
     [SerializeField] float speed =  20f;
     [SerializeField] float jumpSpeed = 10f;
-    [SerializeField] float bulletSpeed = 1000f;
+    
     Animator anim;
 
-    public Rigidbody2D projectile;
+    
  
     // new input system
     public Vector2 moveVal;
@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         MyBodyCollider2D = GetComponent<CapsuleCollider2D>();
         MyFeetCollider2D = GetComponent<BoxCollider2D>();
-
+        currentHealth = maxHealth;
+        healthBar.SetHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -36,11 +37,10 @@ public class PlayerController : MonoBehaviour
         FireBalls();
         FlipPlayer();
         Dash();
+        PlayerDeath();
     }
 
-    void OnMove(InputValue value){
-        moveVal = value.Get<Vector2>();
-    }
+    
 
     void OnJump(InputValue value){
         bool playerHasVerticalSpeed = Mathf.Abs(rbd.velocity.y) > Mathf.Epsilon;
@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
             rbd.velocity += new Vector2(0f,jumpSpeed);
         }
 
+    }
+
+    void OnMove(InputValue value){
+        moveVal = value.Get<Vector2>();
     }
 
     // movements on inputs
@@ -77,14 +81,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Teleport mechanics
-    // void OnTriggerEnter2D(Collider2D other) {
-    //     if(other.tag=="Portal1"){
-    //         transform.position = GameObject.FindGameObjectWithTag("Portal2").transform.position;
-    //     }
-    // }
-
-    public float dashForce = 1000f; 
     void Dash(){
         if(Input.GetKeyDown(KeyCode.E)){
             rbd.velocity = new Vector2(100f*Mathf.Sign(transform.localScale.x),rbd.velocity.y);
@@ -95,6 +91,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // fire bullet
+    public Rigidbody2D projectile;
+    [SerializeField] float bulletSpeed = 1000f;
     void FireBalls(){
         float pdir = Mathf.Sign(transform.localScale.x);
         Rigidbody2D p;
@@ -113,7 +111,44 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        anim.SetBool("Jumping",false);    
+        anim.SetBool("Jumping",false); 
+
+        if(other.gameObject.tag=="EnemyAttack"){
+            TakeDamage(5);
+            Debug.Log("damage taken");
+        }
+        
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag=="GreenFeather"){
+            GainHealth(20);
+            Debug.Log("gain");
+        }
+    }
+
+    // Health system
+    public HealthBar healthBar;
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    void TakeDamage(int damage){
+        currentHealth = currentHealth-damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    void GainHealth(int gain){
+        currentHealth = currentHealth + gain;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public ParticleSystem pd;
+    void PlayerDeath(){
+        if(currentHealth<=0){
+            pd.Play();
+            Destroy(gameObject);
+        }
+    }
+
 
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject player;
     Rigidbody2D fb;
     void Start()
     {
@@ -18,12 +17,7 @@ public class BulletScript : MonoBehaviour
         
     }
 
-    void rangeDestroy(){
-        float dist = Vector2.Distance(player.transform.position,fb.transform.position);
-        if(dist>4){
-            Destroy(gameObject);
-        }
-    }
+    
 
     void OnCollisionEnter2D(Collision2D other) {
         Destroy(gameObject);
